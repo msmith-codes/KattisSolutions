@@ -9,41 +9,30 @@ int main()
 
     long long int n = input.length();
     
-    const long long int LARGE = 10000000000;
-    long long int dp[2] = {0, LARGE}; 
-    
-    for (long long int i = 0; i < n; i++) {
-        long long int new_dp[2];
-        
-        long long int stay_north = dp[0];
-        if (input[i] == 'N' || input[i] == 'B') {
-            stay_north += 1;
-        }
-        
-        long long int cross_to_north = dp[1] + 1; // +1 for crossing
-        if (input[i] == 'N' || input[i] == 'B') {
-            cross_to_north += 1;
-        }
-        
-        new_dp[0] = std::min(stay_north, cross_to_north);
-        
-        long long int stay_south = dp[1];
-        if (input[i] == 'S' || input[i] == 'B') {
-            stay_south += 1;
-        }
-        
-        long long int cross_to_south = dp[0] + 1; // +1 for crossing
-        if (input[i] == 'S' || input[i] == 'B') {
-            cross_to_south += 1;
-        }
-        
-        new_dp[1] = std::min(stay_south, cross_to_south);
-        
-        dp[0] = new_dp[0];
-        dp[1] = new_dp[1];
+    long long dp[2];
+    const long long INF = (long long)1e18;
+    dp[0] = 0;           // cost to be north (start)
+    dp[1] = INF;         // cost to be south (initially unreachable)
+
+    for (char c : input) {
+        bool northV = (c == 'N' || c == 'B');
+        bool southV = (c == 'S' || c == 'B');
+
+        long long stay_north = dp[0] + (northV ? 1 : 0);
+        long long cross_to_north = dp[1] + 1 + (long long)std::min(northV ? 1 : 0, southV ? 1 : 0);
+
+        long long new_north = std::min(stay_north, cross_to_north);
+
+        long long stay_south = dp[1] + (southV ? 1 : 0);
+        long long cross_to_south = dp[0] + 1 + (long long)std::min(northV ? 1 : 0, southV ? 1 : 0);
+
+        long long new_south = std::min(stay_south, cross_to_south);
+
+        dp[0] = new_north;
+        dp[1] = new_south;
     }
-    
-    std::cout << dp[0] << std::endl;
-    
+
+    std::cout << dp[0] << '\n';
     return 0;
+
 }
