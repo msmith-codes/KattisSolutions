@@ -9,8 +9,6 @@ int main()
     std::vector<int> a;
 
     std::cin >> n;
-
-    bool is_sorted = false;
     
     // Inputing data.
     for(int i = 0; i < n; ++i) {
