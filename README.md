@@ -13,6 +13,7 @@ My solutions to Kattis programming challenges.
 * [Early Termination](https://open.kattis.com/problems/earlytermination) - Solution in Python
 * [Gnome Sequencing](https://open.kattis.com/problems/gnomesequencing) - Solution in C++
 * [Going to School](https://open.kattis.com/problems/skolvagen) - Solution in C++
+* [Meow Factor](https://open.kattis.com/problems/meowfactor) - Solution in C++
 * [Quadrant Selection](https://open.kattis.com/problems/quadrant) - Solution in C++
 * [Rect Sect](https://open.kattis.com/problems/rectsect) - Solution in C++
 * [Sort](https://open.kattis.com/problems/sort) - Solution in C++
